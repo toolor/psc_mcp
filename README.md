@@ -1,46 +1,111 @@
 # PSC MCP 服务器
 
-基于FastMCP的普通话考试报名查询工具。
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+![Python Version](https://img.shields.io/badge/python-3.8%2B-blue)
 
-## 功能
+基于 FastMCP 框架开发的普通话水平测试（PSC）考试报名查询系统，提供全国各省份测试站点的报名信息查询服务。
 
-- 获取省份列表
-- 查询开放报名的测试站点
-- 查询即将开放报名的测试站点
+## 目录
 
-## 安装
+- [功能特性](#功能特性)
+- [快速开始](#快速开始)
+  - [环境要求](#环境要求)
+  - [安装](#安装)
+- [使用方法](#使用方法)
+  - [本地运行](#本地运行)
+  - [Docker 部署](#docker-部署)
+- [API 接口](#api-接口)
+- [项目结构](#项目结构)
+- [许可证](#许可证)
 
-推荐使用uv管理依赖：
+## 功能特性
+
+- 🌍 **省份列表获取** - 获取支持的所有省份列表
+- 📅 **报名信息查询** - 实时查询各省份开放报名的测试站点
+- ⏱️ **即将开考查询** - 查看即将举行考试的测试站点信息
+- 🚀 **高性能架构** - 基于 FastMCP 框架，提供高效的 API 服务
+- 🐳 **容器化部署** - 支持 Docker 快速部署
+
+## 快速开始
+
+### 环境要求
+
+- Python 3.8 或更高版本
+- uv (推荐) 或 pip 包管理器
+- Docker (可选，用于容器化部署)
+
+### 安装
+
+推荐使用 uv 管理依赖：
+
 ```bash
 uv sync
 ```
 
-或者使用pip安装依赖：
-```bash
-pip install fastmcp requests
-```
-
 ## 使用方法
 
-启动服务器：
+### 本地运行
+
+启动开发服务器：
+
 ```bash
 uv run python src/psc.py
 ```
 
-或者使用Docker：
+服务器将在 `http://localhost:8000` 启动。
+
+### Docker 部署
+
+构建 Docker 镜像：
+
 ```bash
 docker build -t psc-mpc .
+```
+
+运行容器：
+
+```bash
 docker run -p 8000:8000 psc-mpc
 ```
 
-## 提供的工具
+## API 接口
 
-- `get_provinces()`: 获取省份列表
-- `get_open_stations(province_id)`: 获取指定省份的开放报名测试站点
-- `get_next_stations(province_id)`: 获取指定省份的即将开考测试站点
+| 方法 | 路径 | 描述 |
+|------|------|------|
+| GET | `/provinces` | 获取省份列表 |
+| GET | `/open-stations/{province_id}` | 获取指定省份开放报名的测试站点 |
+| GET | `/next-stations/{province_id}` | 获取指定省份即将开考的测试站点 |
 
-## 使用示例
+### 示例请求
 
-1. 获取省份列表：`get_provinces()`
-2. 查询宁夏开放报名的测试站点：`get_open_stations("ningxia")`
-3. 查询宁夏即将开考的测试站点：`get_next_stations("ningxia")`
+1. 获取省份列表：
+   ```bash
+   curl http://localhost:8000/provinces
+   ```
+
+2. 查询宁夏开放报名的测试站点：
+   ```bash
+   curl http://localhost:8000/open-stations/ningxia
+   ```
+
+3. 查询宁夏即将开考的测试站点：
+   ```bash
+   curl http://localhost:8000/next-stations/ningxia
+   ```
+
+## 项目结构
+
+```
+psc_mpc/
+├── src/
+│   ├── __init__.py
+│   └── psc.py          # 主应用文件
+├── Dockerfile          # Docker 配置文件
+├── pyproject.toml      # 项目配置和依赖声明
+├── README.md           # 项目说明文档
+└── uv.lock             # 依赖锁定文件
+```
+
+## 许可证
+
+本项目采用 MIT 许可证。详情请见 [LICENSE](LICENSE) 文件。
