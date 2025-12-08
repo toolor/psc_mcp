@@ -2,16 +2,16 @@
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 ![Python Version](https://img.shields.io/badge/python-3.8%2B-blue)
+![PyPI](https://img.shields.io/pypi/v/psc-mpc)
 
 基于 FastMCP 框架开发的普通话水平测试（PSC）考试报名查询系统，提供全国各省份测试站点的报名信息查询服务。
 
 ## 目录
 
 - [功能特性](#功能特性)
-- [快速开始](#快速开始)
-  - [环境要求](#环境要求)
-  - [安装](#安装)
-- [使用方法](#使用方法)
+- [安装](#安装)
+- [作为包使用](#作为包使用)
+- [作为Web服务运行](#作为web服务运行)
   - [本地运行](#本地运行)
   - [Docker 部署](#docker-部署)
 - [API 接口](#api-接口)
@@ -26,15 +26,15 @@
 - 🚀 **高性能架构** - 基于 FastMCP 框架，提供高效的 API 服务
 - 🐳 **容器化部署** - 支持 Docker 快速部署
 
-## 快速开始
+## 安装
 
-### 环境要求
+### 作为包安装
 
-- Python 3.8 或更高版本
-- uv (推荐) 或 pip 包管理器
-- Docker (可选，用于容器化部署)
+```bash
+pip install psc-mpc
+```
 
-### 安装
+### 开发环境安装
 
 推荐使用 uv 管理依赖：
 
@@ -42,7 +42,33 @@
 uv sync
 ```
 
-## 使用方法
+或者使用 pip 安装依赖：
+
+```bash
+pip install -r requirements.txt
+```
+
+## 作为包使用
+
+安装后，您可以直接在 Python 代码中使用该包：
+
+```python
+from psc_mpc import get_provinces, get_open_stations, get_next_stations
+
+# 获取省份列表
+provinces = get_provinces()
+print(provinces)
+
+# 获取宁夏开放报名的测试站点
+ningxia_stations = get_open_stations("ningxia")
+print(ningxia_stations)
+
+# 获取宁夏即将开考的测试站点
+next_stations = get_next_stations("ningxia")
+print(next_stations)
+```
+
+## 作为Web服务运行
 
 ### 本地运行
 
@@ -50,6 +76,12 @@ uv sync
 
 ```bash
 uv run python src/psc.py
+```
+
+或者使用 Python 直接运行：
+
+```bash
+python -m src.psc
 ```
 
 服务器将在 `http://localhost:8000` 启动。
@@ -103,6 +135,7 @@ psc_mpc/
 ├── Dockerfile          # Docker 配置文件
 ├── pyproject.toml      # 项目配置和依赖声明
 ├── README.md           # 项目说明文档
+├── requirements.txt    # 依赖列表
 └── uv.lock             # 依赖锁定文件
 ```
 
