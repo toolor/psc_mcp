@@ -1,0 +1,20 @@
+[project]
+name = "psc-mpc"
+version = "0.1.0"
+description = "普通话水平测试(PSC)报名查询工具"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "fastmcp>=2.13.3",
+    "requests>=2.31.0",
+]
+
+[build-system]
+requires = ["setuptools>=45", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-dir]
+"" = "src"
