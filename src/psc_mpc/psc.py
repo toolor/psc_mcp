@@ -503,12 +503,6 @@ def main():
         default="/mcp",
         help="HTTP/SSE 服务器路径 (仅在 HTTP/SSE 传输方式下有效)"
     )
-    parser.add_argument(
-        "--endpoint",
-        default="/mcp",
-        help="Streamable HTTP 端点路径 (仅在 streamable-http 传输方式下有效)"
-    )
-    
     args = parser.parse_args()
     
     if args.transport == "stdio":
@@ -523,9 +517,7 @@ def main():
     elif args.transport == "streamable-http":
         mcp.run(
             transport="streamable-http",
-            host=args.host,
-            port=args.port,
-            endpoint=args.endpoint
+            port=args.port
         )
     else:  # http
         mcp.run(

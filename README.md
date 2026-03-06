@@ -94,7 +94,7 @@ psc_mpc --transport sse --host 127.0.0.1 --port 8000 --path /mcp
 
 **Streamable HTTP 模式**：
 ```bash
-psc_mpc --transport streamable-http --host 127.0.0.1 --port 8000 --endpoint /mcp
+psc_mpc --transport streamable-http --port 8000
 ```
 
 服务器将在 `http://localhost:8000/mcp` 启动。
