@@ -80,10 +80,21 @@ psc_mpc
 
 ### HTTP 服务模式
 
-如果需要以 HTTP 服务模式运行，可以使用以下命令：
+支持多种 HTTP 传输方式：
 
+**标准 HTTP 模式**：
 ```bash
 psc_mpc --transport http --host 127.0.0.1 --port 8000 --path /mcp
+```
+
+**SSE 模式**（Server-Sent Events）：
+```bash
+psc_mpc --transport sse --host 127.0.0.1 --port 8000 --path /mcp
+```
+
+**Streamable HTTP 模式**：
+```bash
+psc_mpc --transport streamable-http --host 127.0.0.1 --port 8000 --endpoint /mcp
 ```
 
 服务器将在 `http://localhost:8000/mcp` 启动。

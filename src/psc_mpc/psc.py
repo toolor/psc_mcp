@@ -483,32 +483,51 @@ def main():
     parser = argparse.ArgumentParser(description="普通话水平测试报名查询工具")
     parser.add_argument(
         "--transport",
-        choices=["stdio", "http"],
+        choices=["stdio", "sse", "http", "streamable-http"],
         default="stdio",
-        help="传输方式 (默认: stdio)"
+        help="传输方式 (默认: stdio, 可选: stdio, sse, http, streamable-http)"
     )
     parser.add_argument(
         "--host",
         default="127.0.0.1",
-        help="HTTP 服务器主机 (仅在 HTTP 传输方式下有效)"
+        help="HTTP/SSE 服务器主机 (仅在 HTTP/SSE 传输方式下有效)"
     )
     parser.add_argument(
         "--port",
         type=int,
         default=8000,
-        help="HTTP 服务器端口 (仅在 HTTP 传输方式下有效)"
+        help="HTTP/SSE 服务器端口 (仅在 HTTP/SSE 传输方式下有效)"
     )
     parser.add_argument(
         "--path",
         default="/mcp",
-        help="HTTP 服务器路径 (仅在 HTTP 传输方式下有效)"
+        help="HTTP/SSE 服务器路径 (仅在 HTTP/SSE 传输方式下有效)"
+    )
+    parser.add_argument(
+        "--endpoint",
+        default="/mcp",
+        help="Streamable HTTP 端点路径 (仅在 streamable-http 传输方式下有效)"
     )
     
     args = parser.parse_args()
     
     if args.transport == "stdio":
         mcp.run(transport="stdio")
-    else:
+    elif args.transport == "sse":
+        mcp.run(
+            transport="sse",
+            host=args.host,
+            port=args.port,
+            path=args.path
+        )
+    elif args.transport == "streamable-http":
+        mcp.run(
+            transport="streamable-http",
+            host=args.host,
+            port=args.port,
+            endpoint=args.endpoint
+        )
+    else:  # http
         mcp.run(
             transport="http",
             host=args.host,
