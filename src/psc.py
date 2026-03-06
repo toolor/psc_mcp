@@ -36,26 +36,7 @@ mcp = FastMCP("普通话水平测试报名查询工具",
         调用 get_next_stations(province_id) 获取指定省份即将开放报名的测试站点。
         调用 get_exam_info(province_id, exam_type) 获取更详细的考试信息。
 
-    """,
-    tool_transformations=[
-        {
-            "name": "get_provinces",
-            "description": "获取支持报名的省份列表"
-        },
-        {
-            "name": "get_open_stations",
-            "description": "获取指定省份当前开放报名的测试站点"
-        },
-        {
-            "name": "get_next_stations",
-            "description": "获取指定省份即将开放报名的测试站点"
-        },
-        {
-            "name": "get_exam_info",
-            "description": "获取普通话考试信息（支持查询正在报名、即将报名或全部）"
-        }
-    ]
-    )
+    """)
 
 def fetch_data(url: str, params: Optional[dict] = None) -> dict:
     """
