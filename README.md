@@ -76,6 +76,8 @@ print(next_stations)
 
 ```bash
 uv run python -m psc
+uv tool install .
+
 ```
 
 或者使用 Python 直接运行：
