@@ -3,3 +3,4 @@
 from .psc import mcp, main
 
 __all__ = ["mcp", "main"]
+__package__ = "psc_mpc"

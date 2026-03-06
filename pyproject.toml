@@ -28,7 +28,7 @@ dependencies = [
 requires-python = ">=3.10"
 
 [project.scripts]
-psc_mpc = "psc:main"
+psc_mpc = "psc_mpc:main"
 
 [project.urls]
 Homepage = "https://github.com/toolor/psc_mcp"
