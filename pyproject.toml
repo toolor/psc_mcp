@@ -9,7 +9,7 @@ description = "普通话水平测试报名查询工具"
 readme = "README.md"
 license = {file = "LICENSE"}
 authors = [
-  {name = "Your Name", email = "your.email@example.com"},
+  {name = "toolor", email = "toolor@qq.com"},
 ]
 keywords = ["psc", "普通话", "考试", "报名", "查询"]
 classifiers = [
@@ -31,9 +31,9 @@ requires-python = ">=3.10"
 psc_mpc = "psc_mpc:main"
 
 [project.urls]
-Homepage = "https://github.com/yourusername/psc_mpc"
-Repository = "https://github.com/yourusername/psc_mpc"
-Issues = "https://github.com/yourusername/psc_mpc/issues"
+Homepage = "https://github.com/toolor/psc_mcp"
+Repository = "https://github.com/toolor/psc_mcp"
+Issues = "https://github.com/toolor/psc_mcp/issues"
 
 [tool.setuptools.packages.find]
 where = ["src"]
