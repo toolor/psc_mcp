@@ -2,7 +2,7 @@
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 ![Python Version](https://img.shields.io/badge/python-3.8%2B-blue)
-![PyPI](https://img.shields.io/pypi/v/psc-mpc)
+![PyPI](https://img.shields.io/pypi/v/psc_mpc)
 
 基于 FastMCP 框架开发的普通话水平测试（PSC）考试报名查询系统，提供全国各省份测试站点的报名信息查询服务。
 
@@ -31,7 +31,7 @@
 ### 作为包安装
 
 ```bash
-pip install psc-mpc
+pip install psc_mpc
 ```
 
 ### 开发环境安装
@@ -75,13 +75,13 @@ print(next_stations)
 启动开发服务器：
 
 ```bash
-uv run python src/psc.py
+uv run python -m psc
 ```
 
 或者使用 Python 直接运行：
 
 ```bash
-python -m src.psc
+python -m psc
 ```
 
 服务器将在 `http://localhost:8000` 启动。
@@ -91,13 +91,13 @@ python -m src.psc
 构建 Docker 镜像：
 
 ```bash
-docker build -t psc-mpc .
+docker build -t psc_mpc .
 ```
 
 运行容器：
 
 ```bash
-docker run -p 8000:8000 psc-mpc
+docker run -p 8000:8000 psc_mpc
 ```
 
 ## API 接口
@@ -131,12 +131,12 @@ docker run -p 8000:8000 psc-mpc
 psc_mpc/
 ├── src/
 │   ├── __init__.py
-│   └── psc.py          # 主应用文件
-├── Dockerfile          # Docker 配置文件
-├── pyproject.toml      # 项目配置和依赖声明
-├── README.md           # 项目说明文档
-├── requirements.txt    # 依赖列表
-└── uv.lock             # 依赖锁定文件
+│   ├── __main__.py
+│   └── psc.py              # 主应用文件
+├── Dockerfile              # Docker 配置文件
+├── pyproject.toml          # 项目配置和依赖声明
+├── README.md               # 项目说明文档
+└── LICENSE                 # 许可证文件
 ```
 
 ## 许可证
