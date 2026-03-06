@@ -475,9 +475,46 @@ def get_exam_info(province_id: Optional[str] = None, exam_type: str = "all") -> 
     }
 
 
+import argparse
+
+
 def main():
-    """主函数，用于启动 PSC MPC 服务"""
-    mcp.run(transport="http", host="127.0.0.1", port=8000, path="/mcp")
+    """主函数，用于启动 PSC MCP 服务"""
+    parser = argparse.ArgumentParser(description="普通话水平测试报名查询工具")
+    parser.add_argument(
+        "--transport",
+        choices=["stdio", "http"],
+        default="stdio",
+        help="传输方式 (默认: stdio)"
+    )
+    parser.add_argument(
+        "--host",
+        default="127.0.0.1",
+        help="HTTP 服务器主机 (仅在 HTTP 传输方式下有效)"
+    )
+    parser.add_argument(
+        "--port",
+        type=int,
+        default=8000,
+        help="HTTP 服务器端口 (仅在 HTTP 传输方式下有效)"
+    )
+    parser.add_argument(
+        "--path",
+        default="/mcp",
+        help="HTTP 服务器路径 (仅在 HTTP 传输方式下有效)"
+    )
+    
+    args = parser.parse_args()
+    
+    if args.transport == "stdio":
+        mcp.run(transport="stdio")
+    else:
+        mcp.run(
+            transport="http",
+            host=args.host,
+            port=args.port,
+            path=args.path
+        )
 
 
 if __name__ == "__main__":

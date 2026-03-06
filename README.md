@@ -68,25 +68,39 @@ next_stations = get_next_stations("ningxia")
 print(next_stations)
 ```
 
-## 作为Web服务运行
+## 作为MCP服务运行
 
-### 本地运行
+### 默认方式（stdio）
 
-启动开发服务器：
-
-```bash
-uv run python -m psc
-uv tool install .
-
-```
-
-或者使用 Python 直接运行：
+默认情况下，服务以 stdio 方式运行，适合与支持 MCP 协议的客户端集成：
 
 ```bash
-python -m psc
+psc_mpc
 ```
 
-服务器将在 `http://localhost:8000` 启动。
+### HTTP 服务模式
+
+如果需要以 HTTP 服务模式运行，可以使用以下命令：
+
+```bash
+psc_mpc --transport http --host 127.0.0.1 --port 8000 --path /mcp
+```
+
+服务器将在 `http://localhost:8000/mcp` 启动。
+
+### 开发环境安装
+
+推荐使用 uv 管理依赖：
+
+```bash
+uv sync
+```
+
+或者使用 pip 安装依赖：
+
+```bash
+pip install -r requirements.txt
+```
 
 ### Docker 部署
 
