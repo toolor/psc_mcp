@@ -2,7 +2,7 @@
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 ![Python Version](https://img.shields.io/badge/python-3.8%2B-blue)
-![PyPI](https://img.shields.io/pypi/v/pscmcp)
+![PyPI](https://img.shields.io/pypi/v/psc_mcp)
 
 基于 FastMCP 框架开发的普通话水平测试（PSC）考试报名查询系统，提供全国各省份测试站点的报名信息查询服务。
 
@@ -31,7 +31,7 @@
 ### 作为包安装
 
 ```bash
-pip install pscmcp
+pip install psc_mcp
 ```
 
 ### 开发环境安装
@@ -53,7 +53,7 @@ pip install -r requirements.txt
 安装后，您可以直接在 Python 代码中使用该包：
 
 ```python
-from pscmcp import get_provinces, get_open_stations, get_next_stations
+from psc_mcp import get_provinces, get_open_stations, get_next_stations
 
 # 获取省份列表
 provinces = get_provinces()
@@ -75,7 +75,7 @@ print(next_stations)
 默认情况下，服务以 stdio 方式运行，适合与支持 MCP 协议的客户端集成：
 
 ```bash
-pscmcp
+psc_mcp
 ```
 
 ### HTTP 服务模式
@@ -84,17 +84,17 @@ pscmcp
 
 **标准 HTTP 模式**：
 ```bash
-pscmcp --transport http --host 127.0.0.1 --port 8000 --path /mcp
+psc_mcp --transport http --host 127.0.0.1 --port 8000 --path /mcp
 ```
 
 **SSE 模式**（Server-Sent Events）：
 ```bash
-pscmcp --transport sse --host 127.0.0.1 --port 8000 --path /mcp
+psc_mcp --transport sse --host 127.0.0.1 --port 8000 --path /mcp
 ```
 
 **Streamable HTTP 模式**：
 ```bash
-pscmcp --transport streamable-http --port 8000
+psc_mcp --transport streamable-http --port 8000
 ```
 
 服务器将在 `http://localhost:8000/mcp` 启动。
@@ -118,13 +118,13 @@ pip install -r requirements.txt
 构建 Docker 镜像：
 
 ```bash
-docker build -t pscmcp .
+docker build -t psc_mcp .
 ```
 
 运行容器：
 
 ```bash
-docker run -p 8000:8000 pscmcp
+docker run -p 8000:8000 psc_mcp
 ```
 
 ## API 接口
@@ -155,7 +155,7 @@ docker run -p 8000:8000 pscmcp
 ## 项目结构
 
 ```
-pscmcp/
+psc_mcp/
 ├── src/
 │   ├── __init__.py
 │   ├── __main__.py
