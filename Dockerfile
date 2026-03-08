@@ -17,4 +17,4 @@ RUN uv sync
 EXPOSE 8000
 
 # 运行应用
-CMD ["uv", "run", "python", "-m", "psc"]
+CMD ["uv", "run", "python", "-m", "pscmcp"]

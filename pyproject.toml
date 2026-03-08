@@ -3,8 +3,8 @@ requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "psc_mpc"
-version = "0.1.5"
+name = "pscmcp"
+version = "0.2.0"
 description = "普通话水平测试报名查询工具"
 readme = "README.md"
 license = {file = "LICENSE"}
@@ -28,7 +28,7 @@ dependencies = [
 requires-python = ">=3.10"
 
 [project.scripts]
-psc_mpc = "psc_mpc:main"
+pscmcp = "pscmcp:main"
 
 [project.urls]
 Homepage = "https://github.com/toolor/psc_mcp"
